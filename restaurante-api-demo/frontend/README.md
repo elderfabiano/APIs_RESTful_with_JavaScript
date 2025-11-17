@@ -40,15 +40,27 @@ O Vite mostrará a URL (geralmente `http://localhost:5173`)
 O front-end se comunica com o back-end através do arquivo `src/services/api.js`:
 
 - **Base URL**: `http://localhost:4000/api`
-- **Endpoint usado**: `GET /cardapio`
+- **Endpoints usados**: 
+  - `GET /cardapio` - Buscar cardápio
+  - `POST /comandas` - Criar novo pedido
 
 ## 🎨 Funcionalidades Implementadas
 
+### Passo 2.1 - Leitura
 - ✅ Buscar e exibir cardápio completo
 - ✅ Loading state (carregando...)
 - ✅ Error handling (se o back-end não responder)
 - ✅ Design responsivo
 - ✅ Efeitos hover nos cards
+
+### Passo 2.2 - Criação de Pedidos (Novo!)
+- ✅ Adicionar itens ao carrinho (comanda)
+- ✅ Exibir carrinho com itens selecionados
+- ✅ Calcular total do pedido automaticamente
+- ✅ Enviar pedido para o back-end (POST)
+- ✅ Limpar carrinho após pedido bem-sucedido
+- ✅ Validação de carrinho vazio
+- ✅ Feedback visual com alertas
 
 ## 🔧 Tecnologias
 
@@ -74,12 +86,13 @@ O front-end se comunica com o back-end através do arquivo `src/services/api.js`
 
 Se você ver erro de CORS no console, verifique se o back-end tem o middleware `cors()` configurado em `app.js`.
 
-## 📝 Próximos Passos (Passo 2.2)
+## 📝 Próximos Passos (Passo 2.3)
 
-- [ ] Adicionar formulário para fazer pedidos
-- [ ] Criar componente de carrinho
-- [ ] Implementar POST de comandas
-- [ ] Visualizar pedidos realizados
+- [ ] Adicionar campo para escolher número da mesa
+- [ ] Implementar botão para remover itens do carrinho
+- [ ] Criar página para visualizar histórico de pedidos
+- [ ] Adicionar filtros no cardápio (por preço, tipo)
+- [ ] Implementar busca de itens do cardápio
 
 ## 👨‍💻 Desenvolvimento
 

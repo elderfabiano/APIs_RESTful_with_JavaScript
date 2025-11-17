@@ -104,11 +104,19 @@ npm test
 - Componente de exibição do cardápio
 - Estados de Loading e Error
 
-### 🔜 Passo 2.2: Front-end (Escrita) - Próxima Etapa
-- Formulário para fazer pedidos
-- Componente de carrinho
-- POST de comandas
-- Visualização de pedidos
+### ✅ Passo 2.2: Front-end (Criação de Pedidos) - Completo!
+- Estado de comanda (carrinho)
+- Botões para adicionar itens ao carrinho
+- Exibição da comanda com total calculado
+- Função POST para enviar pedidos
+- Limpeza do carrinho após envio
+- Validações e feedback ao usuário
+
+### 🔜 Passo 2.3: Melhorias e Funcionalidades Extras - Próxima Etapa
+- Seleção de número da mesa
+- Remover itens do carrinho
+- Histórico de pedidos
+- Filtros e busca no cardápio
 
 ## 🔗 Fluxo de Comunicação
 

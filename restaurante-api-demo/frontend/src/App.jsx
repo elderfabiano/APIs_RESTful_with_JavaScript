@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import { getCardapio } from './services/api'; // Importa nossa função da API
+import { getCardapio, createComanda } from './services/api'; // Importa nossas funções da API
 import './App.css'; // Vite inclui este CSS básico
 
 function App() {
@@ -9,6 +9,8 @@ function App() {
   const [loading, setLoading] = useState(true);
   // Estado para erros
   const [error, setError] = useState(null);
+  // Estado para a comanda (carrinho de pedidos)
+  const [comanda, setComanda] = useState([]);
 
   // useEffect: Roda quando o componente "monta" (inicia)
   useEffect(() => {
@@ -34,6 +36,44 @@ function App() {
 
     fetchCardapio(); // Chama a função
   }, []); // O array vazio [] significa que este efeito roda APENAS UMA VEZ
+
+  // Função para adicionar um item ao carrinho (comanda)
+  const handleAddItemComanda = (item) => {
+    setComanda((prevComanda) => {
+      console.log('✅ Item adicionado à comanda:', item.nome);
+      // Adiciona o item novo à lista de itens anteriores
+      return [...prevComanda, item];
+    });
+  };
+
+  // Função para calcular o total da comanda
+  const calcularTotalComanda = () => {
+    return comanda.reduce((total, item) => total + item.preco, 0);
+  };
+
+  // Função para ENVIAR o pedido para o back-end
+  const handleFazerPedido = async () => {
+    if (comanda.length === 0) {
+      alert('Sua comanda está vazia!');
+      return;
+    }
+
+    const dadosDoPedido = {
+      mesa: 'Mesa 5', // Podemos deixar fixo por enquanto
+      itens: comanda.map(item => item.id), // Envia só os IDs, como no back-end
+      total: calcularTotalComanda(),
+    };
+
+    try {
+      const response = await createComanda(dadosDoPedido);
+      console.log('✅ Pedido enviado com sucesso!', response.data);
+      alert(`✅ Pedido #${response.data.dados.id} enviado para a cozinha!`);
+      setComanda([]); // Limpa o carrinho
+    } catch (err) {
+      console.error('❌ Erro ao enviar pedido:', err);
+      alert('❌ Erro ao enviar pedido para a "Cozinha". Tente novamente.');
+    }
+  };
 
   // --- Renderização ---
 
@@ -70,8 +110,40 @@ function App() {
             <h2>{item.nome}</h2>
             <p className="descricao">{item.descricao}</p>
             <p className="preco">R$ {item.preco.toFixed(2)}</p>
+            {/* Botão para adicionar item à comanda */}
+            <button onClick={() => handleAddItemComanda(item)}>
+              ➕ Adicionar ao Pedido
+            </button>
           </div>
         ))}
+      </div>
+
+      {/* SEÇÃO DA COMANDA (CARRINHO) */}
+      <div className="comanda-secao">
+        <h2>🛒 Sua Comanda (Carrinho)</h2>
+        <div className="comanda-lista">
+          {comanda.length === 0 ? (
+            <p className="comanda-vazia">Seu carrinho está vazio. Adicione itens do cardápio!</p>
+          ) : (
+            comanda.map((item, index) => (
+              <div key={index} className="comanda-item">
+                <span className="comanda-item-nome">{item.nome}</span>
+                <span className="comanda-item-preco">R$ {item.preco.toFixed(2)}</span>
+              </div>
+            ))
+          )}
+        </div>
+        <hr />
+        <div className="comanda-total">
+          <strong>Total: R$ {calcularTotalComanda().toFixed(2)}</strong>
+        </div>
+        <button
+          className="btn-fazer-pedido"
+          onClick={handleFazerPedido}
+          disabled={comanda.length === 0}
+        >
+          🍽️ Fazer Pedido
+        </button>
       </div>
     </div>
   );

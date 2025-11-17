@@ -111,6 +111,133 @@ body {
   font-size: 1.1em;
 }
 
+/* --- Estilos dos Botões do Cardápio --- */
+.cardapio-item button {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  color: white;
+  border: none;
+  padding: 0.7em 1.2em;
+  border-radius: 8px;
+  cursor: pointer;
+  margin-top: 1em;
+  font-size: 0.95em;
+  font-weight: 600;
+  transition: all 0.3s ease;
+  width: 100%;
+}
+
+.cardapio-item button:hover {
+  transform: scale(1.05);
+  box-shadow: 0 4px 12px rgba(102, 126, 234, 0.4);
+}
+
+.cardapio-item button:active {
+  transform: scale(0.98);
+}
+
+/* --- Estilos da Seção de Comanda --- */
+.comanda-secao {
+  background: white;
+  border: 2px solid #667eea;
+  border-radius: 12px;
+  padding: 2em;
+  margin-top: 3em;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+.comanda-secao h2 {
+  color: #333;
+  font-size: 1.8em;
+  margin-bottom: 1em;
+}
+
+.comanda-lista {
+  max-height: 250px;
+  overflow-y: auto;
+  margin-bottom: 1.5em;
+  background-color: #f9f9f9;
+  border-radius: 8px;
+  padding: 1em;
+}
+
+.comanda-vazia {
+  color: #999;
+  font-style: italic;
+  text-align: center;
+  padding: 2em;
+}
+
+.comanda-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.8em;
+  border-bottom: 1px solid #e0e0e0;
+  transition: background-color 0.2s;
+}
+
+.comanda-item:hover {
+  background-color: #f0f0f0;
+}
+
+.comanda-item:last-child {
+  border-bottom: none;
+}
+
+.comanda-item-nome {
+  font-weight: 500;
+  color: #333;
+}
+
+.comanda-item-preco {
+  font-weight: bold;
+  color: #667eea;
+}
+
+.comanda-secao hr {
+  border: none;
+  border-top: 2px solid #e0e0e0;
+  margin: 1.5em 0;
+}
+
+.comanda-total {
+  font-size: 1.5em;
+  margin: 1.5em 0;
+  text-align: right;
+  color: #333;
+}
+
+.btn-fazer-pedido {
+  background: linear-gradient(135deg, #28a745 0%, #20c997 100%);
+  color: white;
+  border: none;
+  padding: 1em 2em;
+  font-size: 1.2em;
+  font-weight: bold;
+  border-radius: 10px;
+  cursor: pointer;
+  width: 100%;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 8px rgba(40, 167, 69, 0.3);
+}
+
+.btn-fazer-pedido:hover:not(:disabled) {
+  background: linear-gradient(135deg, #218838 0%, #1ea87a 100%);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 16px rgba(40, 167, 69, 0.4);
+}
+
+.btn-fazer-pedido:active:not(:disabled) {
+  transform: translateY(0);
+}
+
+.btn-fazer-pedido:disabled {
+  background: linear-gradient(135deg, #ccc 0%, #999 100%);
+  cursor: not-allowed;
+  opacity: 0.6;
+  box-shadow: none;
+}
+
 /* Responsividade */
 @media (max-width: 768px) {
   .App {
@@ -125,5 +252,17 @@ body {
   .cardapio-lista {
     grid-template-columns: 1fr;
     gap: 1em;
+  }
+
+  .comanda-secao {
+    padding: 1.5em;
+  }
+
+  .comanda-secao h2 {
+    font-size: 1.5em;
+  }
+
+  .comanda-total {
+    font-size: 1.3em;
   }
 }
