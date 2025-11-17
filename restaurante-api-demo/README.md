@@ -104,7 +104,7 @@ npm test
 - Componente de exibição do cardápio
 - Estados de Loading e Error
 
-### ✅ Passo 2.2: Front-end (Criação de Pedidos) - Completo!
+### ✅ Passo 2.2: Front-end (Criação de Pedidos)
 - Estado de comanda (carrinho)
 - Botões para adicionar itens ao carrinho
 - Exibição da comanda com total calculado
@@ -112,11 +112,19 @@ npm test
 - Limpeza do carrinho após envio
 - Validações e feedback ao usuário
 
-### 🔜 Passo 2.3: Melhorias e Funcionalidades Extras - Próxima Etapa
-- Seleção de número da mesa
+### ✅ Passo 2.3: Front-end (Painel da Cozinha) - Completo!
+- Componente PainelCozinha para listar pedidos
+- Atualização automática via prop refreshTrigger
+- Exibição de todos os detalhes do pedido
+- Design escuro para simular ambiente de cozinha
+- Grid responsivo com scroll customizado
+
+### 🔜 Passo 2.4: Melhorias e Funcionalidades Extras - Próxima Etapa
+- Gerenciamento de status do pedido
+- Seleção dinâmica de mesa
 - Remover itens do carrinho
-- Histórico de pedidos
 - Filtros e busca no cardápio
+- Sistema de notificações
 
 ## 🔗 Fluxo de Comunicação
 

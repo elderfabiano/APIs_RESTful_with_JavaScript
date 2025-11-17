@@ -28,11 +28,13 @@ O Vite mostrará a URL (geralmente `http://localhost:5173`)
 ```
 /frontend
   /src
+    /components
+      - PainelCozinha.jsx  ← Painel que lista pedidos
     /services
-      - api.js          ← Comunicação com o back-end
-    - App.jsx           ← Componente principal
-    - App.css           ← Estilos
-    - main.jsx          ← Ponto de entrada
+      - api.js             ← Comunicação com o back-end
+    - App.jsx              ← Componente principal
+    - App.css              ← Estilos
+    - main.jsx             ← Ponto de entrada
 ```
 
 ## 🔗 Conexão com o Back-end
@@ -43,6 +45,7 @@ O front-end se comunica com o back-end através do arquivo `src/services/api.js`
 - **Endpoints usados**: 
   - `GET /cardapio` - Buscar cardápio
   - `POST /comandas` - Criar novo pedido
+  - `GET /comandas` - Listar todos os pedidos
 
 ## 🎨 Funcionalidades Implementadas
 
@@ -53,7 +56,7 @@ O front-end se comunica com o back-end através do arquivo `src/services/api.js`
 - ✅ Design responsivo
 - ✅ Efeitos hover nos cards
 
-### Passo 2.2 - Criação de Pedidos (Novo!)
+### Passo 2.2 - Criação de Pedidos
 - ✅ Adicionar itens ao carrinho (comanda)
 - ✅ Exibir carrinho com itens selecionados
 - ✅ Calcular total do pedido automaticamente
@@ -61,6 +64,14 @@ O front-end se comunica com o back-end através do arquivo `src/services/api.js`
 - ✅ Limpar carrinho após pedido bem-sucedido
 - ✅ Validação de carrinho vazio
 - ✅ Feedback visual com alertas
+
+### Passo 2.3 - Painel da Cozinha (Novo!)
+- ✅ Listar todos os pedidos feitos
+- ✅ Atualização automática ao fazer novo pedido
+- ✅ Exibição de detalhes (número, mesa, status, itens, total, data)
+- ✅ Design escuro para simular painel da cozinha
+- ✅ Grid responsivo de pedidos
+- ✅ Scroll customizado para lista de pedidos
 
 ## 🔧 Tecnologias
 
@@ -86,13 +97,14 @@ O front-end se comunica com o back-end através do arquivo `src/services/api.js`
 
 Se você ver erro de CORS no console, verifique se o back-end tem o middleware `cors()` configurado em `app.js`.
 
-## 📝 Próximos Passos (Passo 2.3)
+## 📝 Próximos Passos (Passo 2.4)
 
-- [ ] Adicionar campo para escolher número da mesa
+- [ ] Adicionar botão para atualizar status do pedido (pendente → preparando → pronto)
+- [ ] Adicionar campo para escolher número da mesa dinamicamente
 - [ ] Implementar botão para remover itens do carrinho
-- [ ] Criar página para visualizar histórico de pedidos
 - [ ] Adicionar filtros no cardápio (por preço, tipo)
 - [ ] Implementar busca de itens do cardápio
+- [ ] Adicionar notificações/toasts em vez de alertas
 
 ## 👨‍💻 Desenvolvimento
 

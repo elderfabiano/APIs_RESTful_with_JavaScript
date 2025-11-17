@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react';
 import { getCardapio, createComanda } from './services/api'; // Importa nossas funções da API
+import { PainelCozinha } from './components/PainelCozinha'; // Importa o Painel da Cozinha
 import './App.css'; // Vite inclui este CSS básico
 
 function App() {
@@ -11,6 +12,8 @@ function App() {
   const [error, setError] = useState(null);
   // Estado para a comanda (carrinho de pedidos)
   const [comanda, setComanda] = useState([]);
+  // Estado para controlar atualização do Painel da Cozinha (gatilho)
+  const [refreshPedidos, setRefreshPedidos] = useState(0);
 
   // useEffect: Roda quando o componente "monta" (inicia)
   useEffect(() => {
@@ -69,6 +72,10 @@ function App() {
       console.log('✅ Pedido enviado com sucesso!', response.data);
       alert(`✅ Pedido #${response.data.dados.id} enviado para a cozinha!`);
       setComanda([]); // Limpa o carrinho
+      
+      // ATUALIZA A LISTA DE PEDIDOS NO PAINEL DA COZINHA
+      setRefreshPedidos(count => count + 1); // Incrementa o gatilho
+      
     } catch (err) {
       console.error('❌ Erro ao enviar pedido:', err);
       alert('❌ Erro ao enviar pedido para a "Cozinha". Tente novamente.');
@@ -117,6 +124,9 @@ function App() {
           </div>
         ))}
       </div>
+
+      {/* PAINEL DA COZINHA - Mostra todos os pedidos feitos */}
+      <PainelCozinha refreshTrigger={refreshPedidos} />
 
       {/* SEÇÃO DA COMANDA (CARRINHO) */}
       <div className="comanda-secao">
