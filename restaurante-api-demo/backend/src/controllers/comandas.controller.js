@@ -21,14 +21,48 @@ const getComandas = (req, res) => {
   }
 };
 
+async function buscarNomeItens(itemId){
+    try{
+      const fetchDadosItem = await fetch(`http://localhost:4000/api/cardapio/${itemId}`);
+
+      if(!fetchDadosItem){
+        throw new Error("Erro ao dar fetch nos dados do item");
+      }
+      const response = await fetchDadosItem.json();
+      console.log("Response akljhajkfhafjkha", response);
+      return response.nome;
+    } catch (e){
+      console.log("Error ", e);
+    }
+}
+
+
+
 // Função que cria uma nova comanda (pedido)
 // Recebe os dados do pedido do cliente via req.body
 const createComanda = (req, res) => {
   try {
     // Extrai os dados enviados pelo cliente
     const { mesa, itens, total } = req.body;
+    const fetchItensCardapio = [];
+    let quant = 1;
+    
+    itens.forEach(async (item) => {
+      let nomeItem = await buscarNomeItens(item)
 
-    // total = total * 1.10;
+      if(fetchItensCardapio.includes(nomeItem)){
+        const posItem = fetchItensCardapio.indexOf(nomeItem);
+        fetchItensCardapio[posItem] = (nomeItem + `x${quant}`)
+        quant += 1;
+
+      } else {
+        quant = 1
+        fetchItensCardapio.push(nomeItem + `x${quant}`)
+      }
+      
+    })
+
+    
 
     if(!mesa || mesa === ""){
       res.status(400).json({
@@ -55,7 +89,7 @@ const createComanda = (req, res) => {
     const novaComanda = {
       id: comandas.length + 1, // ID automático baseado no tamanho do array
       mesa,
-      itens,
+      fetchItensCardapio,
       total,
       status: "pendente",
       dataPedido: new Date().toISOString()

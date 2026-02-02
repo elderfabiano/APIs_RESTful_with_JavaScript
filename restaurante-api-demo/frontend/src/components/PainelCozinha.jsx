@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 import { getComandas, updateComandaStatus, deleteComanda } from '../services/api';
-
+import { getCardapioItem } from '../services/api';
 // Componente que exibe todos os pedidos feitos (Painel da Cozinha)
 // Recebe a prop 'refreshTrigger' para saber quando atualizar a lista
 export function PainelCozinha({ refreshTrigger }) {
@@ -21,7 +21,7 @@ export function PainelCozinha({ refreshTrigger }) {
         const listaPedidos = response.data.dados || response.data;
         
         // Inverte a lista para mostrar os pedidos mais novos primeiro
-        setComandas([...listaPedidos].reverse()); 
+        setComandas([...listaPedidos]); 
       } catch (err) {
         console.error('❌ Erro ao buscar pedidos:', err);
         setError(err);
@@ -31,6 +31,7 @@ export function PainelCozinha({ refreshTrigger }) {
     };
 
     fetchComandas();
+    console.log(comandas)
   }, [refreshTrigger]); // <-- O gatilho de atualização!
 
   // Função para lidar com a mudança de status
@@ -122,8 +123,8 @@ export function PainelCozinha({ refreshTrigger }) {
               <p className="cozinha-status">
                 Status: <span className={`status status-${comanda.status.toLowerCase().replace(' ', '-')}`}>{comanda.status}</span>
               </p>
-              <p className="cozinha-itens">
-                📋 Itens: {comanda.itens.length} {comanda.itens.length === 1 ? 'item' : 'itens'}
+              <p className="cozinha-itens" style={{whiteSpace: "pre-line"}}>
+                📋 Itens: {"\n"} {comanda.fetchItensCardapio.map(c => c).join('\n')} 
               </p>
               <p className="cozinha-total">
                 <strong>💰 Total: R$ {comanda.total.toFixed(2)}</strong>
