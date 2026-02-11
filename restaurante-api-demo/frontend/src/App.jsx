@@ -110,7 +110,7 @@ function App() {
         <h1>🍽️ Restaurante 🍽️</h1>
         <div className="error">
           <p>❌ Erro: A "Cozinha" (Back-end) não respondeu.</p>
-          <p>Verifique se o servidor está rodando em http://localhost:4000</p>
+          <p>Verifique se o servidor está rodando em https://apis-restful-with-javascript-2z4n.onrender.com/api</p>
         </div>
       </div>
     );
