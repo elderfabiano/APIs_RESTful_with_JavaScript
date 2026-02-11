@@ -9,7 +9,7 @@ const PORT = 4000;
 
 // ========== INICIA O SERVIDOR ==========
 app.listen(PORT, () => {
-  console.log(`🚀 Servidor rodando em http://localhost:${PORT}`);
-  console.log(`📋 Cardápio disponível em http://localhost:${PORT}/api/cardapio`);
-  console.log(`📝 Comandas disponíveis em http://localhost:${PORT}/api/comandas`);
+  console.log(`🚀 Servidor rodando em https://apis-restful-with-javascript-2z4n.onrender.com/api`);
+  console.log(`📋 Cardápio disponível em https://apis-restful-with-javascript-2z4n.onrender.com/api/cardapio`);
+  console.log(`📝 Comandas disponíveis em https://apis-restful-with-javascript-2z4n.onrender.com/api/comandas`);
 });

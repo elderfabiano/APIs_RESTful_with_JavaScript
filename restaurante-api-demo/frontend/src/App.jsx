@@ -130,21 +130,6 @@ function App() {
             <p className="preco">R$ {item.preco}</p>
             {/* Botão para adicionar item à comanda */}
             
-            <div className='divAddQuantPedidos'  >
-              <button style={{backgroundColor: "red"}} 
-              className='minus-btn'
-              onClick={() => subQuantidade()}
-              >
-                ➖
-              </button>
-              <p class="quantNumber" style={{backgroundColor: 'black'}}>0</p>
-              <button style ={{backgroundColor: 'green'}}
-              className='plus-btn'
-              onClick={() => addQuantidade()}
-              >
-                ➕
-              </button>
-            </div>
               <button className='adicionar-pedido'
               onClick={() => handleAddItemComanda(item)} 
               style={{color: 'white'}}>
