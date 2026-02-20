@@ -133,7 +133,7 @@ function App() {
               <button className='adicionar-pedido'
               onClick={() => handleAddItemComanda(item)} 
               style={{color: 'white'}}>
-                ➕ novo pedido
+                ➕ Novo item
               </button>
       
             
