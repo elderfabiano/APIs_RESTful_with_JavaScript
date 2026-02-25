@@ -1,6 +1,6 @@
 const db = require('../services/database');
 
-const getComandas = async (req, res) => {
+const getusuarios = async (req, res) => {
   try {
     const [rows] = await db.query('SELECT * FROM usuários'); 
 
@@ -12,4 +12,8 @@ const getComandas = async (req, res) => {
     console.error(erro); // Log para ajudar no debug do Render
     res.status(500).json({ sucesso: false, mensagem: "Erro ao acessar o banco" });
   }
+};
+
+module.exports = {
+  listarusuarios
 };
