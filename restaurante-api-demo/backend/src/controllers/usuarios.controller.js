@@ -2,7 +2,7 @@ const db = require('../services/database');
 
 const getusuarios = async (req, res) => {
   try {
-    const [rows] = await db.query('SELECT * FROM usuários'); 
+    const [rows] = await db.query('SELECT * FROM usuarios'); 
 
     res.json({
       sucesso: true,
@@ -15,5 +15,5 @@ const getusuarios = async (req, res) => {
 };
 
 module.exports = {
-  listarusuarios
+  getusuarios
 };
