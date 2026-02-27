@@ -7,6 +7,7 @@ const router = express.Router();
 // Importa os controladores
 const cardapioController = require('../controllers/cardapio.controller');
 const comandasController = require('../controllers/comandas.controller');
+const usuariosController = require('../controllers/usuarios.controller');
 
 // ========== ROTAS DO CARDÁPIO ==========
 // GET /api/cardapio - Retorna todo o cardápio
@@ -27,6 +28,8 @@ router.get('/comandas', comandasController.getComandas);
 
 // // DELETE /api/comandas/:id - Deleta uma comanda
 // router.delete('/comandas/:id', comandasController.deleteComanda);
+
+router.get('/usuarios', usuariosController.getusuarios);
 
 // // Exporta o router para ser usado no server.js
 module.exports = router;
